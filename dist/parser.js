@@ -82,6 +82,14 @@ class Parser {
                 break;
         }
         const name = this.consume(token_1.TokenType.IDENTIFIER, "Expect class name.").value;
+        // Handle Generic Class Declaration <T>
+        if (this.match(token_1.TokenType.LESS_THAN)) {
+            // Simplified: <T> or <T, U>
+            do {
+                this.consume(token_1.TokenType.IDENTIFIER, "Expect type parameter.");
+            } while (this.match(token_1.TokenType.COMMA));
+            this.consume(token_1.TokenType.GREATER_THAN, "Expect '>'.");
+        }
         let superClass = null;
         if (this.match(token_1.TokenType.EXTENDS)) {
             superClass = this.parseQualifiedName();

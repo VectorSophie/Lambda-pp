@@ -74,6 +74,14 @@ t.start();
 chant();
 ```
 
+### 6. Dependency Management (The Vendor Folder)
+We don't use `npm_modules`. We use **Local Vendor Caching**.
+To install a library, you must manually transcribe (copy-paste) the scrolls into `vendor/github.com/author/repo`.
+
+**Supported Standard Libraries:**
+- `github.com/archmage/evocation`: Fireballs, Lightning, and thermal runaway protection.
+- `github.com/archmage/chronomancy`: Time manipulation (Threads).
+
 ---
 
 ## Getting Started
@@ -134,6 +142,10 @@ A: Yes, but `HTTP 404` summons a poltergeist.
 
 **Q: Is it Turing Complete?**
 A: It is **Eldritch Complete**. It can compute anything.
+
+**Q: Did you publish this to npm?**
+A: I cannot publish to the mortal npm registry. However, you can run `npm link` locally to feel the power. 
+*Note: Sisyphus does not take responsibility if `npm link` links your soul to the machine.*
 
 ---
 

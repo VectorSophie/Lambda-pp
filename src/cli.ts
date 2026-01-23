@@ -42,6 +42,31 @@ async function main() {
         console.log(`[LARC] Parsing...`);
         const parser = new Parser(tokens);
         const ast = parser.parse();
+        // console.log("Imports found:", ast.imports);
+
+        // 2.5 Resolve Imports (Simulated Linker)
+        if (ast.imports && ast.imports.length > 0) {
+            console.log(`[Linker] Resolving ${ast.imports.length} dependencies...`);
+            ast.imports.forEach(imp => {
+                const vendorPath = path.join(process.cwd(), 'vendor', imp.path, 'src');
+                if (fs.existsSync(vendorPath)) {
+                    console.log(`  > Linked ${imp.path} from local vendor cache.`);
+                    // Ideally: parse all files in src and add to program body
+                    const files = fs.readdirSync(vendorPath).filter(f => f.endsWith('.lmpp'));
+                    files.forEach(f => {
+                         const libSource = fs.readFileSync(path.join(vendorPath, f), 'utf-8');
+                         const libLexer = new Lexer(libSource);
+                         const libParser = new Parser(libLexer.tokenize());
+                         const libAst = libParser.parse();
+                         // Merge bodies (Naive)
+                         ast.body.push(...libAst.body);
+                         console.log(`    + Injected ${f}`);
+                    });
+                } else {
+                    console.warn(`  [!] Warning: Dependency ${imp.path} not found in vendor/. Casting may fail.`);
+                }
+            });
+        }
 
         if (command === 'build') {
             console.log(`[LARC] Build successful. ${path.basename(filePath)} is valid.`);

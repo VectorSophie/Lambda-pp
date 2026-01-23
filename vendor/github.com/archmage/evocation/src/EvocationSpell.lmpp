@@ -1,0 +1,14 @@
+package github.archmage.evocation;
+
+public class EvocationSpell<T> {
+    
+    public void cast(T target) throws SpellException {
+        // Default implementation throws, enforcing override.
+        // In a better world, this would be abstract.
+        throw new SpellException("You must override cast() or the mana will stagnate.");
+    }
+    
+    public final void stabilize() {
+        System.out.println("[Evocation] Stabilizing thermal runaway...");
+    }
+}

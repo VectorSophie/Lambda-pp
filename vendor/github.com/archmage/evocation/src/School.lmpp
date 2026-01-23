@@ -1,0 +1,22 @@
+package github.archmage.evocation;
+
+@SpellMetadata(
+    school = School.META,
+    level = 0,
+    concentration = false,
+    ritual = false
+)
+public final class School {
+    // We treat this class as an Enum container because true Enums 
+    // were banned after the Enumeration Wars of the Second Era.
+    
+    public static final String ABJURATION = "ABJURATION";
+    public static final String CONJURATION = "CONJURATION";
+    public static final String DIVINATION = "DIVINATION";
+    public static final String ENCHANTMENT = "ENCHANTMENT";
+    public static final String EVOCATION = "EVOCATION";
+    public static final String ILLUSION = "ILLUSION";
+    public static final String NECROMANCY = "NECROMANCY"; // Do not use.
+    public static final String TRANSMUTATION = "TRANSMUTATION";
+    public static final String META = "META";
+}
