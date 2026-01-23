@@ -62,7 +62,7 @@ import "github.com/merlin/beard-trimmer@v0.0.1-alpha";
 ```
 
 ### 5. Concurrent Rituals
-λ++ supports threading, but race conditions manifest as **Time Freezes**.
+λ++ supports threading via `Thread` and Lambda expressions. Race conditions manifest as **Time Freezes**.
 
 ```java
 Thread t = new Thread(() -> {
@@ -82,9 +82,32 @@ To install a library, you must manually transcribe (copy-paste) the scrolls into
 - `github.com/archmage/evocation`: Fireballs, Lightning, and thermal runaway protection.
 - `github.com/archmage/chronomancy`: Time manipulation (Threads).
 
+### 7. Thaumaturgy Engine (Visual Magic)
+The runtime includes a built-in Thaumaturgy visualizer that renders:
+- **Runic Signatures**: Unique hashes for every spell (e.g., `[ ᚺ ᚢ ∞ ᚨ ᚠ ᛟ ]`).
+- **Mana Flux**: Real-time animated bars showing energy allocation (`∆ Flux: 7µ`).
+- **Quantum Formulas**: `Ψ(Spell) = ∂E/∂t`.
+
 ---
 
 ## Getting Started
+
+### Installation
+You don't install λ++. It installs you.
+(But if you must, use `npm`)
+
+```bash
+# Clone the repo (from the Astral Plane)
+git clone https://github.com/archmage/larc.git
+cd larc
+
+# Build the artifacts (Requires Node.js 20+)
+npm install
+npm run build
+
+# Link the soul to your machine (Makes 'larc' command global)
+npm link
+```
 
 ### Writing Your First Curse
 
@@ -103,7 +126,7 @@ public final class Doom {
 }
 ```
 
-### Compiling
+### Compiling & Casting
 Run the **LARC** (Lambda Architect Rumbo's Compiler):
 
 ```bash
@@ -112,10 +135,13 @@ larc cast Doom.lmpp
 
 **Output:**
 ```
-[Registry] Registered ritual: Doom
+[Registry] Registered ritual: Doom [ ᚺ ᚢ ∞ ᚨ ᚠ ᛟ ]
 [Runtime] Invoking Doom.main()...
+[ ᚺ ᚢ ∞ ᚨ ᚠ ᛟ ] Ψ(Doom.main) = ∂E/∂t
 Omae wa mou shindeiru.
+
 [Runtime] Mana pool balanced. Reality is stable.
+  e^(iπ) + 1 = 0 (Reality Stabilized)
 ```
 
 ---
@@ -123,8 +149,8 @@ Omae wa mou shindeiru.
 ## The Standard Library (Grimoire)
 
 - `System.out.println(String)`: Shouts into the void.
-- `Mana.allocate(int)`: Borrows energy from the universe.
-- `Mana.free(ManaPtr)`: Pays it back.
+- `Mana.allocate(int)`: Borrows energy from the universe (Animated).
+- `Mana.free(ManaPtr)`: Pays it back (Animated).
 - `Thread`: Splits the timeline.
 
 ---
@@ -144,8 +170,7 @@ A: Yes, but `HTTP 404` summons a poltergeist.
 A: It is **Eldritch Complete**. It can compute anything.
 
 **Q: Did you publish this to npm?**
-A: I cannot publish to the mortal npm registry. However, you can run `npm link` locally to feel the power. 
-*Note: Sisyphus does not take responsibility if `npm link` links your soul to the machine.*
+A: Yes and no at the same time.
 
 ---
 

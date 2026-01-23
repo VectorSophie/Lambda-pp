@@ -3,10 +3,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Lexer = void 0;
 const token_1 = require("./token");
 class Lexer {
+    source;
+    position = 0;
+    line = 1;
+    col = 1;
     constructor(source) {
-        this.position = 0;
-        this.line = 1;
-        this.col = 1;
         this.source = source;
     }
     advance(amount = 1) {

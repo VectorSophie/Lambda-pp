@@ -3,8 +3,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Parser = void 0;
 const token_1 = require("./token");
 class Parser {
+    tokens;
+    current = 0;
     constructor(tokens) {
-        this.current = 0;
         this.tokens = tokens;
     }
     peek() {
