@@ -1,0 +1,29 @@
+package tower.cantrips;
+
+import "github.com/archmage/evocation";
+import "github.com/common/lightsource";
+
+@SpellMetadata(
+    school = School.EVOCATION,
+    level = 0,
+    concentration = true,
+    ritual = false
+)
+public final class Light extends Cantrip<Object> {
+    
+    // Cantrips cost 0 mana but require concentration
+    private static final ManaCost COST = ManaCost.of(0);
+
+    @Override
+    public void cast(final Object target) throws SpellException {
+        if (target == null) {
+            throw new InvalidTargetException("Cannot light the void");
+        }
+        
+        System.out.println("Lexing verbal components: 'LUMOS MAXIMA'...");
+        System.out.println("Parsing somatic gestures...");
+        
+        // Concentration check logic would go here
+        LightSource.attach(target, Brightness.CANDLE);
+    }
+}

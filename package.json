@@ -1,0 +1,26 @@
+{
+  "name": "larc-interpreter",
+  "version": "1.0.0",
+  "description": "Lambda Architect Rumbo's Compiler for λ++",
+  "main": "dist/cli.js",
+  "bin": {
+    "larc": "dist/cli.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "ts-node src/cli.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "esoteric",
+    "compiler",
+    "magic"
+  ],
+  "author": "Sisyphus",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.19.30",
+    "ts-node": "^10.9.0",
+    "typescript": "^5.0.0"
+  }
+}

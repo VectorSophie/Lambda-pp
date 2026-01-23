@@ -1,0 +1,50 @@
+package tower.east.evocation;
+
+import "github.com/archmage/evocation";
+import "github.com/archmage/geometry@v1.4.2";
+import "github.com/common/dice";
+
+@SpellMetadata(
+    school = School.EVOCATION,
+    level = 3,
+    concentration = false,
+    ritual = false
+)
+public final class Fireball extends EvocationSpell<Creature> {
+    private static final ManaCost COST = ManaCost.of(7);
+
+    @Override
+    public void cast(final Creature target) throws SpellException {
+        System.out.println("Compiling Fireball AST...");
+        
+        // Allocating scope for explosion
+        final Sphere area = new Sphere(target.getPosition(), Distance.feet(20));
+        
+        // Execute payload
+        Explosion.fire(area, Dice.d6(8));
+    }
+
+    public static void main(String[] args) {
+        // Manual Memory Management Demo
+        ManaPtr m = null;
+        try {
+            System.out.println("[Runtime] Allocating 7 mana...");
+            m = Mana.allocate(7);
+            
+            Creature goblin = new Creature("Goblin");
+            Fireball spell = new Fireball();
+            
+            spell.cast(goblin);
+            
+        } catch (SpellException e) {
+            System.err.println("Casting failed: " + e.getMessage());
+        } finally {
+            if (m != null) {
+                System.out.println("[Runtime] Freeing mana...");
+                Mana.free(m);
+            } else {
+                System.err.println("[Runtime] WARNING: Mana leak detected!");
+            }
+        }
+    }
+}
