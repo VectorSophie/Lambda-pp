@@ -1,112 +1,87 @@
-# λ++ (LARC)
+# λ++ (LARC v2.0.0: λLC Edition)
 
-> "Write once, miscast everywhere."
+> "From Sorcery to Ontology. Reduce until reality stabilizes."
 
-λ++ (pronounced *Lambda Plus Plus* or *Luh-Mao*) is the world's first **Enterprise-Grade Arcane Programming Language**. It combines the verbosity of Java 7, the memory safety of C, and the dependency management of Go projects(that have been dead for years)
+λ++ is the world's first **Enterprise-Grade Pure Functional Arcane Programming Language**. 
 
-Designed by **Lambda Architect Rumbo**, λ++ ensures safe reality alteration.
+In version 2.0.0, we have moved beyond procedural "casting" into the realm of **Formal Magicks**. The language is now powered by a **Pure Lambda Calculus (λLC)** engine that uses β-reduction to collapse spells into Normal Form.
+
+---
+
+## The New Philosophy: Formal Magicks
+
+In λ++, we no longer "execute" code. We **reduce terms**.
+- **The Spell**: A pure λ-abstraction (λtarget. λs. bind ... s).
+- **The Mana**: A threaded Monadic state, not a global variable.
+- **The Casting**: A sequence of β-reductions that must logically prove the stability of reality.
+
+### 1. Monadic Mana Management (M3)
+Manual Mana Management is now **mathematically enforced**. 
+`Mana.allocate(n)` and `Mana.free(ptr)` are monadic primitives that thread the `ManaState` through your spell's bind chain.
+
+- **Forget to free?** The monadic chain carries a non-empty `LiveList` into the final `checkLeaks` term. Reduction fails.
+- **Double free?** The `Either` monad short-circuits with a `DoubleFreeException`.
+
+```java
+// Surface λ++ Syntax
+ManaPtr m = Mana.allocate(7);
+try {
+    Fireball.cast(target, m);
+} finally {
+    Mana.free(m);
+}
+
+// Internal λLC Reduction (Desugared)
+λs. bind (allocate 7) (λm. 
+      bind (Fireball.cast target m) (λ_. 
+        bind (free m) (λ__. 
+          (check_leaks)
+        )
+      )
+    ) s
+```
+
+### 2. Pure Thaumaturgy Engine
+The core reducer is now **pure**. It does not perform I/O. Instead, it emits **Observations** (Flux changes, Runic signatures) as part of its monadic result.
+
+The LARC CLI acts as the **Priest**, interpreting these observations to render:
+- **Runic Signatures**: Unique hashes generated from pure execution logs.
+- **Mana Flux**: Animated visual feedback derived from state-threaded `FluxChange` events.
+
+### 3. Church-Encoded Rituals
+All object-oriented constructs (Classes, Methods, Members) are desugared into **Church Records** and **Nested Lambdas**. 
+- **Methods**: Functions that take `this` as their first parameter.
+- **Objects**: Records (nested pairs) that store method closures and field values.
+- **Dispatch**: Selecting a slot from the object record and applying it.
 
 ---
 
 ## Features (Mandatory)
 
-### 1. Manual Mana Management (MMM)
-Garbage collection is for cowards. In λ++, you manually allocate and free **Mana**.
-- **Forget to free?** Mana leak. The fabric of reality tears.
-- **Double free?** Backlash. Your wand catches fire.
-- **Use after free?** You summon something ancient.
+### 1. Zero Side-Effect Core
+The engine (`src/reducer.ts`) is a pure function: `evaluate(term, env, state) -> MonadicResult`.
+Reality is guaranteed to be stable if the reduction reaches its Normal Form.
 
-```java
-ManaPtr m = Mana.allocate(7); // Cost: 7
-try {
-    Fireball.cast(target, m);
-} finally {
-    Mana.free(m); // REQUIRED.
-}
-```
+### 2. Continuation-Based Exceptions
+Exceptions are no longer "errors" but control-flow branches in the `Either` Monad.
+If a spell breaches the circle, the monadic chain collapses.
 
-### 2. Checked Reality Exceptions
-Exceptions aren't just errors; they are in-world events. You must catch them, or the compiler (The Circle) will exile you.
-
-```java
-try {
-    Summoning.invoke("Demon");
-} catch (CircleBreachedException e) {
-    // Run.
-} catch (SoulContractVoidedException e) {
-    // Lawyer up.
-}
-```
-
-### 3. Bureaucratic Metadata
-Every class requires `@SpellMetadata`. If you don't file your permits, the spell fails.
-
-```java
-@SpellMetadata(
-    school = School.EVOCATION, // Required
-    level = 9,                 // Required
-    concentration = true,      // Required
-    ritual = false,            // Required
-    permitNumber = "A7-B99"    // Optional (Recommended)
-)
-public final class Wish extends Spell<Reality> { ... }
-```
-
-### 4. GitHub-First Imports
-Dependencies are fetched directly from the Astral Plane (GitHub).
-If the repo is deleted, your spellbook becomes a brick.
-
-```java
-import "github.com/archmage/evocation";
-import "github.com/merlin/beard-trimmer@v0.0.1-alpha";
-```
-
-### 5. Concurrent Rituals
-λ++ supports threading via `Thread` and Lambda expressions. Race conditions manifest as **Time Freezes**.
-
-```java
-Thread t = new Thread(() -> {
-    // This happens in parallel universe A
-    drawCircle();
-});
-t.start();
-// This happens in parallel universe B
-chant();
-```
-
-### 6. Dependency Management (The Vendor Folder)
-We don't use `npm_modules`. We use **Local Vendor Caching**.
-To install a library, you must manually transcribe (copy-paste) the scrolls into `vendor/github.com/author/repo`.
-
-**Supported Standard Libraries:**
-- `github.com/archmage/evocation`: Fireballs, Lightning, and thermal runaway protection.
-- `github.com/archmage/chronomancy`: Time manipulation (Threads).
-
-### 7. Thaumaturgy Engine (Visual Magic)
-The runtime includes a built-in Thaumaturgy visualizer that renders:
-- **Runic Signatures**: Unique hashes for every spell (e.g., `[ ᚺ ᚢ ∞ ᚨ ᚠ ᛟ ]`).
-- **Mana Flux**: Real-time animated bars showing energy allocation (`∆ Flux: 7µ`).
-- **Quantum Formulas**: `Ψ(Spell) = ∂E/∂t`.
+### 3. Recursive Inevitability
+Since λLC has no named functions at the core level, all recursion is implemented via the **Z-combinator** (the call-by-value fixed-point combinator).
 
 ---
 
 ## Getting Started
 
 ### Installation
-You don't install λ++. It installs you.
-(But if you must, use `npm`)
+(LARC v2.0.0 requires the `feature/lambda-calculus-conversion` branch)
 
 ```bash
-# Clone the repo (from the Astral Plane)
-git clone https://github.com/archmage/larc.git
-cd larc
-
-# Build the artifacts (Requires Node.js 20+)
+git clone https://github.com/VectorSophie/Lambda-pp.git
+cd Lambda-pp
+git checkout feature/lambda-calculus-conversion
 npm install
 npm run build
-
-# Link the soul to your machine (Makes 'larc' command global)
-npm link
 ```
 
 ### Writing Your First Curse
@@ -135,9 +110,16 @@ larc cast Doom.lmpp
 
 **Output:**
 ```
-[Registry] Registered ritual: Doom [ ᚺ ᚢ ∞ ᚨ ᚠ ᛟ ]
-[Runtime] Invoking Doom.main()...
-[ ᚺ ᚢ ∞ ᚨ ᚠ ᛟ ] Ψ(Doom.main) = ∂E/∂t
+--------------------------------------------------
+LARC v2.0.0 (λLC) - Reducing tower.forbidden...
+--------------------------------------------------
+[LARC] Parsing...
+[Linker] Resolving dependencies...
+[LARC] Casting...
+
+[Runtime] Allocating 1 mana...
+[Cast] Casting spell...
+  Manifesting: Doom [ ᚺ ᚢ ∞ ᚨ ᚠ ᛟ ]
 Omae wa mou shindeiru.
 
 [Runtime] Mana pool balanced. Reality is stable.
@@ -146,12 +128,12 @@ Omae wa mou shindeiru.
 
 ---
 
-## The Standard Library (Grimoire)
+## The Grimoire (Standard Primitives)
 
-- `System.out.println(String)`: Shouts into the void.
-- `Mana.allocate(int)`: Borrows energy from the universe (Animated).
-- `Mana.free(ManaPtr)`: Pays it back (Animated).
-- `Thread`: Splits the timeline.
+- `System.out.println(String)`: Shouts into the void (Monadic Bind).
+- `Mana.allocate(int)`: Borrows energy (Monadic State).
+- `Mana.free(ManaPtr)`: Pays it back (Monadic State).
+- `Thread`: Splits the timeline (Pi-Calculus).
 
 ---
 
@@ -169,10 +151,7 @@ A: Yes, but `HTTP 404` summons a poltergeist.
 **Q: Is it Turing Complete?**
 A: It is **Eldritch Complete**. It can compute anything.
 
-**Q: Did you publish this to npm?**
-A: Yes and no at the same time.
-
 ---
 
-*Made with mana and ἀ̶̞̻͔̳̫̻̘γ̶̨̮͚̼͚̱̻̗̹̘͇̙͚͊̒ͅα̵̹͕̟̾́π̶̥̘͙̤̗̮̠̝̄́͌̀̍ͅώ̶̧̧̙̥͈͔͚̦̫͂͑̋̎̃́͗̐̓̅̍͗͋̕͝ by Rumbo.*
-*Do not stare directly into the source code.*
+*Made with mathematical inevitability and ἀ̶̞̻͔̳̫̻̘γ̶̮͚̼͊̒꙲π̶̥̘͙̄́͌̀̍ῶ̶͝ by Rumbo.*
+*Do not stare directly into the reducer.*
