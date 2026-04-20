@@ -25,26 +25,18 @@ public final class Fireball extends EvocationSpell<Creature> {
     }
 
     public static void main(String[] args) {
-        // Manual Memory Management Demo
         ManaPtr m = null;
         try {
             System.out.println("[Runtime] Allocating 7 mana...");
             m = Mana.allocate(7);
             
-            Creature goblin = new Creature("Goblin");
             Fireball spell = new Fireball();
+            spell.cast(null);
             
-            spell.cast(goblin);
-            
+            System.out.println("[Runtime] Freeing mana...");
+            Mana.free(m);
         } catch (SpellException e) {
             System.err.println("Casting failed: " + e.getMessage());
-        } finally {
-            if (m != null) {
-                System.out.println("[Runtime] Freeing mana...");
-                Mana.free(m);
-            } else {
-                System.err.println("[Runtime] WARNING: Mana leak detected!");
-            }
         }
     }
 }

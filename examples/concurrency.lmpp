@@ -6,17 +6,11 @@ public class SummoningRitual {
     public static void main(String[] args) {
         System.out.println("Beginning ritual...");
         
-        // Spawn a thread to handle the summoning circle
-        Thread t = new Thread(() -> {
-            System.out.println("Drawing circle...");
-            ManaPtr m = Mana.allocate(5);
-            System.out.println("Circle complete. Mana consumed.");
-            Mana.free(m);
-        });
-        
-        t.start();
+        System.out.println("Drawing circle...");
+        ManaPtr m = Mana.allocate(5);
+        System.out.println("Circle complete. Mana consumed.");
+        Mana.free(m);
         
         System.out.println("Ritual main thread continuing...");
-        // Wait for user input or just finish
     }
 }

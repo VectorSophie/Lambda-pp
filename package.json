@@ -1,6 +1,6 @@
 {
   "name": "larc-interpreter",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Lambda Architect Rumbo's Compiler for λ++",
   "main": "dist/cli.js",
   "bin": {
@@ -16,8 +16,8 @@
     "compiler",
     "magic"
   ],
-  "author": "Sisyphus",
-  "license": "ISC",
+  "author": "VectorSophie",
+  "license": "MIT",
   "devDependencies": {
     "@types/node": "^20.19.30",
     "ts-node": "^10.9.0",
